@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wizverse - Homepage</title>
-    <style>
-        body {
-            background-color: hsl(177, 87%, 54%);
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            color: #009688;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <h1>Welcome to Wizverse!</h1>
-        <p>This is the homepage of my Twitter like app. Feel free to explore!</p>
+<body class="bg-gradient-to-b bg-blue-500 to-teal-600 min-h-screen flex flex-col">
+    <header class="bg-blue-600">
+        <div class="container p-4 mx-auto">
+            <h1 class="text-3xl font-bold text-teal-600 mb-4">Welcome to Wizverse!</h1>
+        </div>  
+    </header>
+
+    <div class="flex-grow">
+         <p class="text-lg text-green text-center">This is the homepage of my Twitter-like app. Feel free to explore!</p>
     </div>
+
+    <footer class="bg-blue-800">
+        <div class="flex justify-evenly py-4">
+            <a href="#" class="text-white hover:text-gray-400">Home</a>
+            <a href="#" class="text-white hover:text-gray-400">Search</a>
+            <a href="#" class="text-white hover:text-gray-400">Notification</a>
+            <a href="#" class="text-white hover:text-gray-400">User</a>
+        </div>
+    </footer>
 </body>
 </html>
+
