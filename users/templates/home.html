@@ -6,7 +6,7 @@
     <title>Wizverse - Homepage</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-b bg-blue-500 to-teal-600 min-h-screen flex flex-col">
+<body class="bg-gradient-to-b from-blue-500 to-teal-600 min-h-screen flex flex-col">
     <header class="bg-blue-600">
         <div class="container p-4 mx-auto">
             <h1 class="text-3xl font-bold text-teal-600 mb-4">WizVerse</h1>
@@ -14,7 +14,6 @@
     </header>
 
     <div class="flex-grow">
-        <p class="text-lg text-green text-center">This is the homepage of my Twitter-like app. Feel free to explore!</p>
         {% for tweet in tweets %}
             <br>
             <div class="bg-white rounded-lg p-4">
@@ -23,17 +22,33 @@
                 <p class="text-sm text-gray-400">{{ tweet.datetime }}</p>
             </div>
         {% endfor %}
-
     </div>
 
     <footer class="bg-blue-800">
         <div class="flex justify-evenly py-4">
             <a href="#" class="text-white hover:text-gray-400">Home</a>
             <a href="#" class="text-white hover:text-gray-400">Search</a>
-            <a href="#" class="text-white hover:text-gray-400">Notification</a>
-            <a href="#" class="text-white hover:text-gray-400">User</a>
+            <a href="#" class="text-white hover:text-gray-400">Notification</a> 
+            <a href="#" class="text-white hover:text-gray-400 relative" onclick="togglePopupMenu()">
+                User
+                <!-- Define the pop-up menu -->
+                <div id="popupMenu" class="hidden absolute right-0 bottom-0 mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-10">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Bookmark</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                </div>
+            </a>
         </div>
     </footer>
+
+    <!-- JavaScript to handle pop-up menu -->
+    <script>
+        function togglePopupMenu() {
+            var popupMenu = document.getElementById("popupMenu");
+            popupMenu.classList.toggle("hidden");
+        }
+    </script>
 </body>
 </html>
 
