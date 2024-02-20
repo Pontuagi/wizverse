@@ -14,7 +14,16 @@
     </header>
 
     <div class="flex-grow">
-         <p class="text-lg text-green text-center">This is the homepage of my Twitter-like app. Feel free to explore!</p>
+        <p class="text-lg text-green text-center">This is the homepage of my Twitter-like app. Feel free to explore!</p>
+        {% for tweet in tweets %}
+            <br>
+            <div class="bg-white rounded-lg p-4">
+                <a href="#" class="text-lg font-bold">{{ tweet.username }}</a>
+                <p class="text-lg">{{ tweet.text }}</p>
+                <p class="text-sm text-gray-400">{{ tweet.datetime }}</p>
+            </div>
+        {% endfor %}
+
     </div>
 
     <footer class="bg-blue-800">
