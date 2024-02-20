@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'wizverse.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
-
+'''
 # sqlite3 database configuration
 DATABASES = {
     'default': {
@@ -84,7 +84,6 @@ DATABASES = {
     }
 }
 
-'''
 # MongoDB database configuration.
 DATABASES = {
     'default': {
@@ -94,6 +93,18 @@ DATABASES = {
     }
 }
 '''
+
+#Postgresql database configuration
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'wizverse_database',
+        'USER': 'wizverse_user',
+        'PASSWORD': 'w1zv3rse_p@ss',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
