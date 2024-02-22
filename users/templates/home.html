@@ -16,7 +16,7 @@
     <div class="flex-grow">
         {% for tweet in tweets %}
             <br>
-            <div class="bg-white rounded-lg p-4">
+            <div class="bg-blue-200 rounded-lg p-4">
                 <a href="#" class="text-lg font-bold">{{ tweet.username }}</a>
                 <p class="text-lg">{{ tweet.text }}</p>
                 <p class="text-sm text-gray-400">{{ tweet.datetime }}</p>
@@ -24,19 +24,19 @@
         {% endfor %}
     </div>
 
-    <footer class="bg-blue-800">
+    <footer class="bg-blue-800 fixed bottom-0 left-0 w-full">
         <div class="flex justify-evenly py-4">
-            <a href="#" class="text-white hover:text-gray-400">Home</a>
+            <a href="{% url 'home' %}" class="text-white hover:text-gray-400">Home</a>
             <a href="#" class="text-white hover:text-gray-400">Search</a>
             <a href="#" class="text-white hover:text-gray-400">Notification</a> 
             <a href="#" class="text-white hover:text-gray-400 relative" onclick="togglePopupMenu()">
                 User
                 <!-- Define the pop-up menu -->
-                <div id="popupMenu" class="hidden absolute right-0 bottom-0 mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-10">
+                <div id="popupMenu" class="hidden absolute right-0 bottom-0 mt-2 bg-blue-200 border border-gray-300 rounded-md shadow-lg z-10">
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Bookmark</a>
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
                 </div>
             </a>
         </div>

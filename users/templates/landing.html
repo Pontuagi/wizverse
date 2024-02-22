@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wizverse - Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-b from-blue-500 to-teal-600 min-h-screen flex flex-col">
+    <header class="bg-blue-600">
+        <div class="container p-4 mx-auto">
+            <h1 class="text-3xl font-bold text-teal-600 mb-4">WizVerse</h1>
+        </div>  
+    </header>
+
+    <div class="flex-grow justify-center items-center">
+        <div class="max-w-md mx-auto px-3">
+            <br>
+            <p>
+                Welcome to Wizverse, a platform where you can share thought-provoking content,
+                and others can engage in open discussions, expressing their agreement or disagreement with your ideas.
+                It's a space for meaningful conversations and respectful debates on controversial topics.  
+            </p>
+            <ul> <br> 
+            <li>Already have an account, <a href="{% url 'login' %}" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-4">Login here</a></li>
+            <br>
+            <li>Don't have an account, <a href="{% url 'register' %}" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-4">Register here</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-8">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{ message }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+    </div>
+
+    <footer class="bg-blue-800 fixed bottom-0 left-0 w-full">
+        <div class="flex justify-evenly py-4">
+            <a href="{% url 'home' %}" class="text-white hover:text-gray-400">Home</a>
+            <a href="#" class="text-white hover:text-gray-400">Search</a>
+            <a href="#" class="text-white hover:text-gray-400">Notification</a> 
+            <a href="{% url 'login' %}" class="text-white hover:text-gray-400">Login</a> 
+        </div>
+    </footer>
+
+</body>
+</html>
