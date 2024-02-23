@@ -1,54 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wizverse - Homepage</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gradient-to-b from-blue-500 to-teal-600 min-h-screen flex flex-col">
-    <header class="bg-blue-600">
-        <div class="container p-4 mx-auto">
-            <h1 class="text-3xl font-bold text-teal-600 mb-4">WizVerse</h1>
-        </div>  
-    </header>
+{% extends 'base.html' %}
 
-    <div class="flex-grow">
-        {% for tweet in tweets %}
-            <br>
-            <div class="bg-blue-200 rounded-lg p-4">
-                <a href="#" class="text-lg font-bold">{{ tweet.username }}</a>
-                <p class="text-lg">{{ tweet.text }}</p>
-                <p class="text-sm text-gray-400">{{ tweet.datetime }}</p>
-            </div>
-        {% endfor %}
+{% block content %}
+
+    <div class="container mx-auto mt-8 px-10">
+        <div class="mb-4">
+            <a href="{% url 'createPost' %}" class="bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Create Post</a>
+        </div>
+        <div class="flex flex-col space-y-6">
+            {% for tweet in object_list %}
+                <div class="bg-blue-200 rounded-lg p-7">
+                    <a href="#" class="text-lg font-bold">{{ tweet.username }}</a>
+                    <p class="text-lg">{{ tweet.text }}</p>
+                    <p class="text-sm text-gray-400">{{ tweet.datetime }}</p>
+                    <div class="mt-4">
+                        <button class="bg-blue-200 text-blue-500 hover:text-blue-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2">Agree</button>
+                        <button class="bg-blue-200 text-red-500 hover:text-red-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2">Disagree</button>
+                        <button class="bg-blue-200 text-blue-500 hover:text-blue-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Share</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
-    <footer class="bg-blue-800 fixed bottom-0 left-0 w-full">
-        <div class="flex justify-evenly py-4">
-            <a href="{% url 'home' %}" class="text-white hover:text-gray-400">Home</a>
-            <a href="#" class="text-white hover:text-gray-400">Search</a>
-            <a href="#" class="text-white hover:text-gray-400">Notification</a> 
-            <a class="text-white hover:text-gray-400 relative" onclick="togglePopupMenu()">
-                User
-                <!-- Define the pop-up menu -->
-                <div id="popupMenu" class="hidden absolute right-0 bottom-0 mt-2 bg-blue-200 border border-gray-300 rounded-md shadow-lg z-10">
-                    <a href="{% url 'profile' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Bookmark</a>
-                    <a href="{% url 'profileupdate' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-                    <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
-                </div>
-            </a>
-        </div>
-    </footer>
-
-    <!-- JavaScript to handle pop-up menu -->
-    <script>
-        function togglePopupMenu() {
-            var popupMenu = document.getElementById("popupMenu");
-            popupMenu.classList.toggle("hidden");
-        }
-    </script>
-</body>
-</html>
-
+{% endblock %}
