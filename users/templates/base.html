@@ -20,18 +20,25 @@
 
     <footer class="bg-blue-800 fixed bottom-0 left-0 w-full">
         <div class="flex justify-evenly py-4">
-            <button class="text-white hover:text-gray-400 focus:outline-none" onclick="window.location.href='{% url 'home' %}'">Home</button>
-            <button class="text-white hover:text-gray-400 focus:outline-none" onclick="window.location.href='#'">Search</button>
-            <button class="text-white hover:text-gray-400 focus:outline-none" onclick="window.location.href='#'">Notification</button>
-            <button class="text-white hover:text-gray-400 focus:outline-none relative" onclick="togglePopupMenu()">User</button>
-                <!-- Define the pop-up menu -->
-                <div id="popupMenu" class="hidden absolute right-12 bottom-12 mt-2 bg-blue-200 border border-gray-300 rounded-md shadow-lg z-10">
-                    <a href="{% url 'profile' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Bookmark</a>
-                    <a href="{% url 'profileupdate' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-                    <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
-                </div>
-        
+            <a href="{% url 'home' %}" class="text-white hover:text-gray-400 focus:outline-none">
+                <button class="focus:outline-none">Home</button>
+            </a>
+            <a href="#" class="text-white hover:text-gray-400 focus:outline-none">
+                <button class="focus:outline-none">Search</button>
+            </a>
+            <a href="#" class="text-white hover:text-gray-400 focus:outline-none">
+                <button class="focus:outline-none">Notification</button>
+            </a>
+            <button class="text-white hover:text-gray-400 focus:outline-none relative" onclick="togglePopupMenu()">
+                User
+            </button>
+            <!-- Define the pop-up menu -->
+            <div id="popupMenu" class="hidden absolute right-12 bottom-12 mt-2 bg-blue-200 border border-gray-300 rounded-md shadow-lg z-10">
+                <a href="{% url 'profile' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Bookmark</a>
+                <a href="{% url 'profileupdate' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+            </div>
         </div>
     </footer>
 
