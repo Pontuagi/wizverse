@@ -15,11 +15,13 @@
                     <div class="mt-4">
                         
                         <div class="inline-block text-gray-400 mr-2">
-                            <button id="agreeBtn" class="bg-blue-300 text-blue-500 hover:text-blue-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2" onclick="toggleColor('agreeBtn')">Agree</button>
+                            <button id="agreeBtn-{{ tweet.id }}" data-post-id="{{ tweet.id }}" class="agreeBtn bg-blue-300 text-blue-500 hover:text-blue-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2">Agree</button>
+                            <span id="agreeCount-{{ tweet.id }}"></span>
                         </div>
                         
                         <div class="inline-block text-gray-400 mr-2">
-                            <button id="disagreeBtn" class="bg-blue-300 text-blue-500 hover:text-red-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2" onclick="toggleColor('disagreeBtn')">Disagree</button>
+                            <button id="disagreeBtn-{{ tweet.id }}" data-post-id="{{ tweet.id }}" class="disagreeBtn bg-blue-300 text-blue-500 hover:text-red-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2">Disagree</button>
+                            <span id="disagreeCount-{{ tweet.id }}"></span>
                         </div>
                         
                         <div class="inline-block text-gray-400 mr-2">
@@ -37,17 +39,36 @@
 {% block extra_scripts %}
 
 <script>
-     function toggleColor(buttonId) {
-        var button = document.getElementById(buttonId);
-        // Toggle different classes based on the button ID
-        if (buttonId === 'agreeBtn') {
-            button.classList.toggle("bg-green-300");
-            button.classList.toggle("text-green-700");
-        } else if (buttonId === 'disagreeBtn') {
-            button.classList.toggle("bg-red-300");
-            button.classList.toggle("text-red-700");
-        }
-    }
+    document.querySelectorAll('.agreeBtn, .disagreeBtn').forEach(button => {
+        button.addEventListener('click', function() {
+            const postId = this.getAttribute('data-post-id');
+            const isAgree = this.classList.contains('agreeBtn');
+            const url = isAgree ? '{% url "agree_post" 0 %}'.replace('0', postId) : '{% url "disagree_post" 0 %}'.replace('0', postId);
+            
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                credentials: 'same-origin'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const agreeCount = data.agree_count;
+                const disagreeCount = data.disagree_count;
+                document.getElementById(`agreeCount-${postId}`).innerText = agreeCount;
+                document.getElementById(`disagreeCount-${postId}`).innerText = disagreeCount;
+            })
+            .catch(error => {
+                console.error('There was an error with the fetch operation:', error);
+            });
+        });
+    });
 </script>
 
 {% endblock %}
