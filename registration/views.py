@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import RegisterForm, ProfileUpdateForm
+from .models import Profile
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 
@@ -35,3 +37,15 @@ def profileUpdate(request):
     else:
         pform = ProfileUpdateForm(instance=request.user.profile)
     return render(request, 'registration/profileUpdate.html', {'pform': pform})
+
+
+@login_required
+def profile_view(request, username):
+    user = get_object_or_404(User, username=username)
+    profile = get_object_or_404(Profile, user=user)
+
+    context = {
+        'user': user,
+        'profile': profile,
+    }
+    return render(request, 'registration/profile_view.html', context)

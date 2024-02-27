@@ -19,7 +19,7 @@ document.querySelectorAll('.agreeBtn, .disagreeBtn').forEach(button => {
         })
         .then(data => {
             // Update button color based on the clicked button
-            this.style.backgroundColor = isAgree ? 'bg-green' : 'bg-red';
+            this.style.backgroundColor = isAgree ? 'green' : 'red';
 
             // Update agree and disagree counts as before
             const agreeCount = data.agree_count;
