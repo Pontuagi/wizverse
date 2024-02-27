@@ -10,7 +10,31 @@ def landing(request):
     return render(request, 'landing.html')
 
 
+def handle_agreement(request, post_id, model_field):
+    post = get_object_or_404(tweet, pk=post_id)
+    user = request.user
+    agreement, created = model_field.through.objects.get_or_create(tweet_id=post_id, user=user)
+    if not created:
+        agreement.delete()
+    else:
+        other_field = post.disagreements if model_field == post.agreements else post.agreements
+        other_field.remove(user)
+    post.save()
+    return JsonResponse({'agree_count': post.agreements.count(), 'disagree_count': post.disagreements.count()})
+
+
+@login_required
+def agree_post(request, post_id):
+    return handle_agreement(request, post_id, tweet.agreements)
+
+
+@login_required
+def disagree_post(request, post_id):
+    return handle_agreement(request, post_id, tweet.disagreements)
+
+
 class PostListView(LoginRequiredMixin, ListView):
+    # Class render view to post a Post
     model = tweet
     template_name = 'home.html'
     context_object_name = 'tweets'
@@ -19,6 +43,7 @@ class PostListView(LoginRequiredMixin, ListView):
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
+    # Class to render view to create Post
     model = tweet
     template_name = 'createPost.html'
     fields = ['text']
@@ -27,18 +52,4 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.username = self.request.user
         return super().form_valid(form)
-    
 
-@login_required
-def agree_post(request, post_id):
-    post = get_object_or_404(tweet, pk=post_id)
-    post.agreements += 1
-    post.save()
-    return JsonResponse({'agree_count': post.agreements, 'disagree_count': post.disagreements})
-
-@login_required
-def disagree_post(request, post_id):
-    post = get_object_or_404(tweet, pk=post_id)
-    post.disagreements += 1
-    post.save()
-    return JsonResponse({'agree_count': post.agreements, 'disagree_count': post.disagreements})

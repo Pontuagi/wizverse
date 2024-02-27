@@ -16,12 +16,12 @@
                         
                         <div class="inline-block text-gray-400 mr-2">
                             <button id="agreeBtn-{{ tweet.id }}" data-post-id="{{ tweet.id }}" class="agreeBtn bg-blue-300 text-blue-500 hover:text-blue-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2">Agree</button>
-                            <span id="agreeCount-{{ tweet.id }}"></span>
+                            <span class="agree-count">{{ tweet.agreements.count }}</span>
                         </div>
                         
                         <div class="inline-block text-gray-400 mr-2">
                             <button id="disagreeBtn-{{ tweet.id }}" data-post-id="{{ tweet.id }}" class="disagreeBtn bg-blue-300 text-blue-500 hover:text-red-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2">Disagree</button>
-                            <span id="disagreeCount-{{ tweet.id }}"></span>
+                            <span class="disagree-count">{{ tweet.disagreements.count }}</span>
                         </div>
                         
                         <div class="inline-block text-gray-400 mr-2">
@@ -70,5 +70,6 @@
         });
     });
 </script>
+
 
 {% endblock %}
