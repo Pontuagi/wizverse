@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block extra_head %}
+<script src="{% static 'users/js/home.js' %}"></script>
+{% endblock %} 
 {% block content %}
 
     <div class="container mx-auto mt-8 px-10">
@@ -33,43 +38,5 @@
             {% endfor %}
         </div>
     </div>
-
-{% endblock %}
-
-{% block extra_scripts %}
-
-<script>
-    document.querySelectorAll('.agreeBtn, .disagreeBtn').forEach(button => {
-        button.addEventListener('click', function() {
-            const postId = this.getAttribute('data-post-id');
-            const isAgree = this.classList.contains('agreeBtn');
-            const url = isAgree ? '{% url "agree_post" 0 %}'.replace('0', postId) : '{% url "disagree_post" 0 %}'.replace('0', postId);
-            
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': '{{ csrf_token }}'
-                },
-                credentials: 'same-origin'
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const agreeCount = data.agree_count;
-                const disagreeCount = data.disagree_count;
-                document.getElementById(`agreeCount-${postId}`).innerText = agreeCount;
-                document.getElementById(`disagreeCount-${postId}`).innerText = disagreeCount;
-            })
-            .catch(error => {
-                console.error('There was an error with the fetch operation:', error);
-            });
-        });
-    });
-</script>
-
 
 {% endblock %}
