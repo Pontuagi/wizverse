@@ -7,7 +7,20 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-blue-500 text-white flex flex-col justify-center items-center h-screen">
-    <h1 class="text-3xl font-bold mb-4">You have been successfully logged out.</h1>
+    <div class="flex justify-between items-center"> 
+        <h1 class="text-3xl font-bold mb-4">You have been successfully logged out.</h1>
+    </div>
     <p class="text-lg mb-8">If you want to log in again, <a href="{% url 'login' %}" class="underline">click here</a>.</p>
+
+    <br>
+    <br>
+    <a href="{% url 'landing' %}" class="p-2 px-4 rounded-full bg-gray-200 hover:bg-gray-300">
+        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </a>
+
+
 </body>
 </html>
+
