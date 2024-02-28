@@ -13,24 +13,29 @@
         </div>  
     </header>
 
+    <div class="px-2">
     <div class="container max-w-md mx-auto mt-20 mb-20 ">
         <div class="max-w-md mx-auto w-full">
-            <p>Welcome to Wizverse, a platform where you can share thought-provoking content.</p>
-            <ul class="my-4 mt-20">
-                <li>
-                    <button>
-                        Already have an account, <a href="{% url 'login' %}" class="button bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-4">Login here</a>
-                    </button>
+            <p>
+                Welcome to Wizverse,
+                a dynamic platform where you can engage with and
+                share thought-provoking content that sparks curiosity and
+                inspires meaningful discussions.
+            </p>
+    
+        </div>
+        
+        <div class="max-w-md mx-auto mt-10 mb-10">
+            <ul>
+                <li class="mb-4">
+                    <a href="{% url 'login' %}" class="button bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Login</a>
                 </li>
-                <br> <br> <br>
                 <li>
-                    <button>
-                        Don't have an account, <a href="{% url 'register' %}" class="button bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-4">Register here</a>
-                    </button>
+                    <a href="{% url 'register' %}" class="button bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Register</a>
                 </li>
             </ul>
         </div>
-    
+
         <div class="max-w-md mx-auto w-full mt-20 mb-20">
             <img src="/media/wizverse.png" alt="Landing Page Image" class="w-full h-auto">
         </div>
@@ -39,17 +44,23 @@
     <div class="container mx-auto mt-20 mb-20">
         <div class="max-w-md mx-auto">
             <h2 class="text-2xl font-bold text-teal-600">What is Wizverse?</h2>
+            <br>
             <p>
-                It's a space for meaningful conversations and respectful debates on controversial topics. Others can engage in open discussions, expressing their agreement or disagreement with your ideas.
+                Wizverse is an inclusive online platform designed for fostering meaningful conversations and respectful debates on a wide range of topics, including controversial ones.          
             </p>
+            <br>
             <p>
-                Post all your content and theories here and get feedback from the world. Here you can criticize, disagree, or agree with different ideas.
+                It serves as a space where individuals can freely share their content, theories, and ideas while inviting feedback and engagement from a global audience.
+            </p>
+            <br>
+            <p>
+                Whether expressing agreement, disagreement, or offering constructive criticism, users are encouraged to engage in open discussions aimed at promoting understanding and stimulating intellectual discourse.
             </p>
         </div>
     
         <div class="max-w-md mx-auto mt-20 mb-20">
             <h2 class="text-2xl font-bold text-teal-600">How it works</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
                 <div class="text-center">
                     <h3 class="text-xl font-bold text-teal-600">1. Register</h3>
                     <p>Register and create your account</p>
@@ -68,7 +79,13 @@
         <div class="max-w-md mx-auto mt-20 mb-20">
             <h2 class="text-2xl font-bold text-teal-600">Get Started</h2>
             <p>
-                Welcome to Wizverse, a platform where you can share thought-provoking content. 
+                <br>
+                At Wizverse, we extend a warm invitation for you to share your insightful content and engage in enriching discussions.
+                <br> <br>
+                Whether you're passionate about a specific subject or eager to explore new concepts, Wizverse provides a nurturing environment for connection, learning, and intellectual growth. 
+                <br> <br>
+                Join our community today and contribute your unique insights to the world!
+                
                 <br> <br>
 
                 Already have an account, <a href="{% url 'login' %}" class="button bg-teal-600 hover:bg-teal-700 text-blue-800 font-bold py-2 px-4 rounded mt-4">Login here</a>
@@ -84,7 +101,7 @@
             </p>
         </div>
     </div>
-
+    </div>
 
     <footer class="bg-blue-800 fixed bottom-0 mt-20 w-full">
         <div class="flex justify-evenly py-4">
