@@ -66,13 +66,14 @@ class AddCommentView(LoginRequiredMixin,View):
         # Retrieve the tweet object based on the tweet_id
         try:
             post = tweet.objects.get(pk=tweet_id)
+            user = request.user
         except tweet.DoesNotExist:
             messages.error(request, 'Tweet does not exist')
             return redirect('home') 
         
         # Create a new comment object using the data submitted in the form
         comment_text = request.POST.get('text')
-        comment = Comment.objects.create(tweet=post, text=comment_text)
+        comment = Comment.objects.create(tweet=post, user=user, text=comment_text)
         
         return redirect('post_detail', tweet_id=tweet_id)
 

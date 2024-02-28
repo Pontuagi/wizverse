@@ -2,24 +2,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="tweet-detail">
-        <div class="tweet">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-xl mx-auto">
             <!-- Display tweet details -->
-            <p>{{ tweet.text }}</p>
-        </div>
-        <div class="comments">
+            <div class="bg-blue-200 shadow-md rounded-md p-4 mb-6">
+                <p class="text-lg font-semibold">{{ tweet.text }}</p>
+            </div>
+
             <!-- Display comments -->
-            {% for comment in tweet.comments.all %}
-                <div class="comment">
-                    <p>{{ comment.text }}</p>
-                </div>
-            {% endfor %}
+            <div class="bg-blue-200 shadow-md rounded-md p-4">
+                <h2 class="text-xl font-semibold mb-4 text-blue-800">Comments</h2>
+                {% for comment in tweet.comments.all %}
+                    <div class="bg-gray-100 p-4 rounded-md mb-2">
+                        <p class="text-sm font-medium text-gray-800 mb-1">{{ comment.user.username }}</p>
+                        <p>{{ comment.text }}</p>
+                        <!-- 
+                        <a href="{% url 'agree_post' comment.id %}" class="inline-block text-sm text-blue-500 mr-2 hover:underline">Agree</a>
+                        
+                      
+                        <a href="{% url 'disagree_post' comment.id %}" class="inline-block text-sm text-red-500 mr-2 hover:underline">Disagree</a>
+                        
+                       
+                        <a href="{% url 'post_detail' comment.id %}" class="inline-block text-sm text-gray-500 hover:underline">Comment</a>
+                        -->
+                    </div>
+                {% endfor %}
+            </div>
+
             <!-- Add comment form -->
-            <form method="post" action="{% url 'add_comment' tweet.id %}">
-                {% csrf_token %}
-                <textarea name="text" rows="3" cols="40"></textarea>
-                <button type="submit">Submit</button>
-            </form>
+            <div class="bg-blue-200 shadow-md rounded-md p-4 mt-6">
+                <h2 class="text-xl font-semibold mb-4 text-blue-800">Add a Comment</h2>
+                <form method="post" action="{% url 'add_comment' tweet.id %}">
+                    {% csrf_token %}
+                    <textarea name="text" rows="3" cols="40" class="w-full px-3 py-2 border border-gray-300 rounded-md mb-4"></textarea>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}
