@@ -101,6 +101,7 @@ DATABASES = {
 
 
 #Postgresql database configuration
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -108,6 +109,17 @@ DATABASES = {
         'USER': 'wizverse_user',
         'PASSWORD': 'w1zv3rse_p@ss',
         'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'POSTGRES_DATABASE',
+        'USER': 'POSTGRES_USER',
+        'PASSWORD': 'POSTGRES_PASSWORD',
+        'HOST': 'POSTGRES_HOST',
         'PORT': '5432',
     }
 }
