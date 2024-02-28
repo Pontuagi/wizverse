@@ -13,23 +13,77 @@
         </div>  
     </header>
 
-    <div class="flex-grow justify-center items-center">
-        <div class="max-w-md mx-auto px-3">
-            <br>
-            <p>
-                Welcome to Wizverse, a platform where you can share thought-provoking content,
-                and others can engage in open discussions, expressing their agreement or disagreement with your ideas.
-                It's a space for meaningful conversations and respectful debates on controversial topics.  
-            </p>
-            <ul> <br> 
-            <li>Already have an account, <a href="{% url 'login' %}" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-4">Login here</a></li>
-            <br>
-            <li>Don't have an account, <a href="{% url 'register' %}" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-4">Register here</a></li>
+    <div class="container max-w-md mx-auto mt-8">
+        <div class="max-w-md mx-auto w-1/2">
+            <p>Welcome to Wizverse, a platform where you can share thought-provoking content.</p>
+            <ul class="my-4">
+                <li>
+                    <button>
+                        Already have an account, <a href="{% url 'login' %}" class="button bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-4">Login here</a>
+                    </button>
+                </li>
+                <li>
+                    <button>
+                        Don't have an account, <a href="{% url 'register' %}" class="button bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-4">Register here</a>
+                    </button>
+                </li>
             </ul>
         </div>
-
-        
+    
+        <div class="max-w-md mx-auto w-1/2">
+            <img src="/media/wizverse.png" alt="Landing Page Image" class="w-1/2 h-auto">
+        </div>
     </div>
+    
+    <div class="container mx-auto mt-8">
+        <div class="max-w-md mx-auto">
+            <h2 class="text-2xl font-bold text-teal-600">What is Wizverse?</h2>
+            <p>
+                It's a space for meaningful conversations and respectful debates on controversial topics. Others can engage in open discussions, expressing their agreement or disagreement with your ideas.
+            </p>
+            <p>
+                Post all your content and theories here and get feedback from the world. Here you can criticize, disagree, or agree with different ideas.
+            </p>
+        </div>
+    
+        <div class="max-w-md mx-auto mt-8">
+            <h2 class="text-2xl font-bold text-teal-600">How it works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="text-center">
+                    <h3 class="text-xl font-bold text-teal-600">1. Register</h3>
+                    <p>Register and create your account</p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-xl font-bold text-teal-600">2. Post</h3>
+                    <p>Post all your content and theories</p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-xl font-bold text-teal-600">3. Get Feedback</h3>
+                    <p>Get feedback from the world</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="max-w-md mx-auto mt-8">
+            <h2 class="text-2xl font-bold text-teal-600">Get Started</h2>
+            <p>
+                Welcome to Wizverse, a platform where you can share thought-provoking content. 
+                <br> <br>
+
+                Already have an account, <a href="{% url 'login' %}" class="button bg-teal-600 hover:bg-teal-700 text-blue-800 font-bold py-2 px-4 rounded mt-4">Login here</a>
+                <br><br>
+                Don't have an account, <a href="{% url 'register' %}" class="button bg-teal-600 hover:bg-teal-700 text-blue-800 font-bold py-2 px-4 rounded mt-4">Register here</a>
+            </p>
+        </div>
+    
+        <div class="max-w-md mx-auto mt-8 mb-20">
+            <h2 class="text-2xl font-bold text-teal-600">Contact Us</h2>
+            <p>
+                If you have any questions or concerns, please feel free to contact us at <a href="mailto:pontuagi@gmail.com">pontuagi@gmail.com</a>
+            </p>
+        </div>
+    </div>
+
 
     <footer class="bg-blue-800 fixed bottom-0 left-0 w-full">
         <div class="flex justify-evenly py-4">
