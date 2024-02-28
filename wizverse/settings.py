@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-*jvl84y56c%xa)2re*6bxw*qm#@2doh!!s5!8-t6jwve(a#om_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost']
 
 
 # Application definition
@@ -104,10 +104,10 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get("DB_NAME"),
-        'USER': os.environ.get("DB_USER"),
-        'PASSWORD': os.environ.get("DB_PASSWORD"),
-        'HOST': os.environ.get("DB_HOST"),
+        'NAME': 'wizverse_database',
+        'USER': 'wizverse_user',
+        'PASSWORD': 'w1zv3rse_p@ss',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
