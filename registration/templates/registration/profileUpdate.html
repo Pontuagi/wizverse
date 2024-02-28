@@ -3,10 +3,10 @@
 {% block title %}Update Profile{% endblock %}
 
 {% block content %}
-<div class="container mx-auto mt-8 w-full">
-    <div class="max-w-md mx-auto bg-blue-200 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+<div class="container mx-auto mt-8 max-w-full">
+    <div class="max-w-md mx-auto bg-blue-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full">
         <h1 class="text-2xl font-semibold text-center mb-4">Update Profile</h1>
-        <form method="POST" enctype="multipart/form-data">
+        <form class="max-w-full" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="mb-4">
                 <label for="id_image" class="block text-gray-700 text-sm font-bold mb-2">Profile Image</label>
