@@ -1,3 +1,4 @@
+/*
 document.querySelectorAll('.agreeBtn, .disagreeBtn').forEach(button => {
     button.addEventListener('click', function() {
         const postId = this.getAttribute('data-post-id');
@@ -19,7 +20,7 @@ document.querySelectorAll('.agreeBtn, .disagreeBtn').forEach(button => {
         })
         .then(data => {
             // Update button color based on the clicked button
-            this.style.backgroundColor = isAgree ? 'green' : 'red';
+            this.style.backgroundColor = isAgree ? 'bg-green' : 'bg-red';
 
             // Update agree and disagree counts as before
             const agreeCount = data.agree_count;
@@ -31,4 +32,17 @@ document.querySelectorAll('.agreeBtn, .disagreeBtn').forEach(button => {
             console.error('There was an error with the fetch operation:', error);
         });
     });
+});
+*/
+const agreeButton = document.querySelector('.agreeBtn');
+const disagreeButton = document.querySelector('.disagreeBtn');
+
+// Add event listener to agree button
+agreeButton.addEventListener('click', () => {
+    agreeButton.style.backgroundColor = 'lightgreen';
+});
+
+// Add event listener to disagree button
+disagreeButton.addEventListener('click', () => {
+    disagreeButton.style.backgroundColor = 'lightgreen';
 });

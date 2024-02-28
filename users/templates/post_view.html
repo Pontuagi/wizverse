@@ -1,0 +1,25 @@
+<!-- tweet_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="tweet-detail">
+        <div class="tweet">
+            <!-- Display tweet details -->
+            <p>{{ tweet.text }}</p>
+        </div>
+        <div class="comments">
+            <!-- Display comments -->
+            {% for comment in tweet.comments.all %}
+                <div class="comment">
+                    <p>{{ comment.text }}</p>
+                </div>
+            {% endfor %}
+            <!-- Add comment form -->
+            <form method="post" action="{% url 'add_comment' tweet.id %}">
+                {% csrf_token %}
+                <textarea name="text" rows="3" cols="40"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

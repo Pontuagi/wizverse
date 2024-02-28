@@ -13,3 +13,14 @@ class tweet(models.Model):
 
     def __str__(self) -> str:
         return self.text
+    
+
+class Comment(models.Model):
+    # Comment Model.
+    text = models.TextField(max_length=300)
+    datetime = models.DateTimeField(default=timezone.now)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    tweet = models.ForeignKey(tweet, on_delete=models.CASCADE, related_name='comments')
+
+    def __str__(self) -> str:
+        return f"{self.user.username} - {self.text[:20]}"
