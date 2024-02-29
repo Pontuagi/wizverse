@@ -1,5 +1,8 @@
 # Wizverse
 
+![wizverse-image](https://github.com/Pontuagi/wizverse/assets/102847899/cc4c348a-4d8a-4c5a-9d5a-0adb9166159a)
+
+
 ## About the app
 
 Wizverse is a social application where you can post your ideas or opinions.
@@ -50,6 +53,6 @@ To create an account you will need to provide the following details
 
 ## Image snippets
 
-![landing page](url)
-![Home page](url)
-![profile page](url)
+![landing page](wizverse-Landing.png)
+![Home page](wizverse-home.png)
+![profile page](wizverse-profile.png)
