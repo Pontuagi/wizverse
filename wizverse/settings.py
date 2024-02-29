@@ -13,16 +13,19 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+
+'''
 from supabase_py import create_client, Client
 
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 
+
 url: str = os.getenv('SUPABASE_URL')
 key: str = os.getenv('SUPABASE_KEY')
 
 supabase: Client = create_client(url, key)
-
+'''
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -108,7 +111,7 @@ DATABASES = {
 
 
 #Postgresql database configuration
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -119,7 +122,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-'''
+
 
 
 
