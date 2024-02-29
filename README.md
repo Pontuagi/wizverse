@@ -32,15 +32,17 @@ To create an account you will need to provide the following details
 
 ## Project setup
 1. start a virtualenvironment
-    python3 -m venv myenv
+
+   ``` python3 -m venv myenv```
     
-    source myenv/bin/activate
+    ```source myenv/bin/activate```
 
 2. Clone the project
-    git clone <url>
+    ```git clone <url>```
 
 3. Install the dependencies in requirements.txt file
-    pip install -r requirements.txt
+
+   ``` pip install -r requirements.txt```
 
 4. Continue.
 
