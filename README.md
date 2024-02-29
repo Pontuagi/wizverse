@@ -38,6 +38,7 @@ To create an account you will need to provide the following details
     ```source myenv/bin/activate```
 
 2. Clone the project
+
     ```git clone <url>```
 
 3. Install the dependencies in requirements.txt file
@@ -49,3 +50,6 @@ To create an account you will need to provide the following details
 
 ## Image snippets
 
+![landing page](url)
+![Home page](url)
+![profile page](url)
