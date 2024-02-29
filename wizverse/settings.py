@@ -13,8 +13,15 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from supabase_py import create_client, Client
 
-load_dotenv()
+env_path = Path('.') / '.env'
+load_dotenv(dotenv_path=env_path)
+
+url: str = os.getenv('SUPABASE_URL')
+key: str = os.getenv('SUPABASE_KEY')
+
+supabase: Client = create_client(url, key)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -113,16 +120,9 @@ DATABASES = {
     }
 }
 '''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'POSTGRES_DATABASE',
-        'USER': 'POSTGRES_USER',
-        'PASSWORD': 'POSTGRES_PASSWORD',
-        'HOST': 'POSTGRES_HOST',
-        'PORT': '5432',
-    }
-}
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
