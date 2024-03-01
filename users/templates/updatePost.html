@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Post - Wizverse{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-semibold text-teal-800 mb-4">Update Post</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-full">Update</button>
+    </form>
+</div>
+{% endblock %}

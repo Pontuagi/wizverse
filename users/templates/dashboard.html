@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Wizverse{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-semibold text-teal-800 mb-4">Your Posts</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {% for tweet in user_tweets %}
+        <div class="bg-white rounded shadow p-4 relative">
+            <p class="text-lg font-semibold mb-2">{{ tweet.text }}</p>
+            <p class="text-gray-600">Posted on: {{ tweet.datetime }}</p>
+            <div class="mt-4 mb-0">
+                <button class="bg-blue-300 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow mx-1">
+                    <a href="{% url 'post_detail' tweet_id=tweet.id %}" class="text-teal-600 hover:underline">View</a>
+                </button>
+                <button class="bg-blue-300 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow mx-1">
+                    <a href="{% url 'post_update' pk=tweet.id %}" class="text-teal-600 hover:underline">Edit</a>
+                </button>
+                <button class="bg-blue-300 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow mx-1">
+                    <a href="{% url 'post_delete' pk=tweet.id %}" class="text-red-600 hover:underline">Delete</a>
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

@@ -1,7 +1,8 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import tweet, Comment
 from django.views import View
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -81,3 +82,29 @@ class AddCommentView(LoginRequiredMixin,View):
         post = get_object_or_404(tweet, pk=tweet_id)
         return render(request, 'add_comment.html', {'tweet': post})
 
+
+class DashboardView(LoginRequiredMixin, ListView):
+    """ Class to display user tweets and comments"""
+    model = tweet
+    template_name = 'dashboard.html'
+    context_object_name = 'user_tweets'
+    ordering = ['-datetime']
+
+    def get_queryset(self):
+        """Filter tweets based on current user"""
+        return tweet.objects.filter(username=self.request.user)
+    
+
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    """ View to update a post"""
+    model = tweet
+    template_name = 'updatePost.html'
+    fields = ['text']
+    success_url = reverse_lazy('dashboard')
+
+
+class PostDeleteView(LoginRequiredMixin, DeleteView):
+    """ View to delete a post"""
+    model = tweet
+    template_name = 'deletePost.html'
+    success_url = reverse_lazy('dashboard')
