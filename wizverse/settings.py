@@ -109,9 +109,8 @@ DATABASES = {
 }
 '''
 
-
+'''
 #Postgresql database configuration
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -122,8 +121,19 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+'''
 
-
+# Supabase database configuration
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres.btitlilycnztlgstkqls',
+        'PASSWORD': 'w1zv3rse_p@ss',
+        'HOST': 'aws-0-eu-west-2.pooler.supabase.com',
+        'PORT': '5432',
+    }
+}
 
 
 
